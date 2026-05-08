@@ -3,12 +3,9 @@
 // =========================
 
 function openProduct(name, image, price){
-
-  window.location.href =
-  `pages/product.html?name=${encodeURIComponent(name)}
-  &image=${encodeURIComponent(image)}
-  &price=${encodeURIComponent(price)}`;
-
+  // Encode URI to avoid spaces/newlines breaking the URL
+  const query = `name=${encodeURIComponent(name)}&image=${encodeURIComponent(image)}&price=${encodeURIComponent(price)}`;
+  window.location.href = `pages/product.html?${query}`;
 }
 
 // =========================
@@ -16,90 +13,24 @@ function openProduct(name, image, price){
 // =========================
 
 function viewAll(category){
-
   // SAVE CATEGORY
-  localStorage.setItem(
-    "selectedCategory",
-    category
-  );
+  localStorage.setItem("selectedCategory", category);
 
   // OPEN ALL PRODUCTS PAGE
-  window.location.href =
-  "pages/allproducts.html";
-
+  window.location.href = "pages/allproducts.html";
 }
 
 // =========================
-// SLIDER
+// SLIDER ANIMATION
 // =========================
 
 document.addEventListener("DOMContentLoaded", () => {
+  const sliderContainer = document.getElementById("slider");
+  const track = document.getElementById("track");
 
-  const slider =
-  document.getElementById("slider");
+  if (!sliderContainer || !track) return;
 
-  const track =
-  document.getElementById("track");
-
-  // SAFETY CHECK
-  if (!slider || !track) return;
-
-  let isDown = false;
-  let startX;
-  let scrollLeft;
-
-  // MOUSE DOWN
-  slider.addEventListener("mousedown", (e) => {
-
-    isDown = true;
-
-    slider.style.cursor = "grabbing";
-
-    startX = e.pageX;
-
-    scrollLeft = track.offsetLeft;
-
-    track.style.animation = "none";
-
-  });
-
-  // MOUSE LEAVE
-  slider.addEventListener("mouseleave", () => {
-
-    isDown = false;
-
-    slider.style.cursor = "grab";
-
-    track.style.animation =
-    "scroll 20s linear infinite";
-
-  });
-
-  // MOUSE UP
-  slider.addEventListener("mouseup", () => {
-
-    isDown = false;
-
-    slider.style.cursor = "grab";
-
-    track.style.animation =
-    "scroll 20s linear infinite";
-
-  });
-
-  // MOUSE MOVE
-  slider.addEventListener("mousemove", (e) => {
-
-    if (!isDown) return;
-
-    e.preventDefault();
-
-    const walk =
-    (e.pageX - startX) * 1.5;
-
-    track.style.transform =
-    `translateX(${scrollLeft + walk}px)`;
-
-  });
-
+  // We are using purely CSS animation for the infinite scrolling track.
+  // Hover effects to pause the animation are handled via CSS (.slider-container:hover .slide-track).
+  // The items inside the slider are wrapped in <a> tags, making them clickable automatically.
 });

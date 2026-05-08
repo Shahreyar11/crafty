@@ -15,10 +15,10 @@ body {
 /* TOPBAR */
 .topbar {
   width: 100%;
-  padding: 20px 5%;
-  background: rgba(255, 255, 255, 0.9);
+  padding: 15px 5%;
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 30px rgba(0,0,0,0.03);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,26 +29,36 @@ body {
 
 .topbar .logo {
   font-size: 24px;
-  font-weight: 700;
-  color: var(--primary-color);
+  font-weight: 800;
+  color: var(--secondary-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.topbar .logo i {
+  color: var(--accent-color);
 }
 
 .back {
   text-decoration: none;
   color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  border: 2px solid var(--gray-light);
   padding: 10px 25px;
   border-radius: 30px;
-  font-weight: 500;
+  font-weight: 600;
   transition: var(--transition);
   display: flex;
   align-items: center;
   gap: 8px;
+  background: var(--white);
 }
 
 .back:hover {
-  background: var(--primary-color);
+  background: var(--secondary-color);
   color: var(--white);
+  border-color: var(--secondary-color);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 .header-title {
@@ -58,28 +68,27 @@ body {
 }
 
 .header-title h1 {
-  font-size: 40px;
+  font-size: 48px;
   color: var(--primary-color);
-  font-weight: 600;
+  font-weight: 800;
   text-transform: capitalize;
+  margin-bottom: 15px;
 }
 
 .header-title p {
   color: var(--gray-text);
-  font-size: 16px;
-  margin-top: 10px;
+  font-size: 18px;
   letter-spacing: 1px;
 }
 
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 40px;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 5% 100px;
 }
-
 </style>
 </head>
 
@@ -87,9 +96,9 @@ body {
 
 <!-- TOP -->
 <div class="topbar">
-  <div class="logo">
-    Crafty Carry
-  </div>
+  <a href="../index.html" class="logo">
+    <i class="fas fa-shopping-bag"></i> Crafty Carry
+  </a>
   <a href="../index.html" class="back">
     <i class="fas fa-arrow-left"></i> Back to Store
   </a>
@@ -132,14 +141,14 @@ const allProducts = {
     {name:"Premium Custom", image:"../images/bag3.jpg", price:"1200"}
   ],
   potli:[
-    {name:"Traditional Potli", image:"../images/bag1.jpg", price:"500"},
-    {name:"Designer Potli", image:"../images/bag2.jpg", price:"700"},
-    {name:"Wedding Potli", image:"../images/bag3.jpg", price:"950"}
+    {name:"Traditional Potli", image:"../images/1.jpg", price:"500"},
+    {name:"Designer Potli", image:"../images/2.jpg", price:"700"},
+    {name:"Wedding Potli", image:"../images/3.jpg", price:"950"}
   ],
   kids:[
-    {name:"Cartoon Bag", image:"../images/bag1.jpg", price:"400"},
-    {name:"School Bag", image:"../images/bag2.jpg", price:"600"},
-    {name:"Premium Kids", image:"../images/bag3.jpg", price:"800"}
+    {name:"Cartoon Bag", image:"../images/4.jpg", price:"400"},
+    {name:"School Bag", image:"../images/5.jpg", price:"600"},
+    {name:"Premium Kids", image:"../images/6.jpg", price:"800"}
   ]
 };
 
@@ -149,17 +158,21 @@ const container = document.getElementById("products");
 // GET CURRENT CATEGORY PRODUCTS
 const products = allProducts[category] || allProducts['tote']; // fallback to tote
 
-// CREATE 20 CARDS (reduced from 50 to avoid DOM overload and ensure a clean UI)
+// CREATE CARDS
 for(let i=0; i<20; i++){
   const product = products[i % products.length];
+  // Add some visual flair: Bestseller / New tags randomly
+  const badgeHtml = (i % 5 === 0) ? `<div class="card-badge">Bestseller</div>` : ((i % 7 === 0) ? `<div class="card-badge" style="background:var(--secondary-color)">New</div>` : '');
+
   container.innerHTML += `
     <div class="card" onclick="openProduct('${product.name}', '${product.image}', '${product.price}')">
+      ${badgeHtml}
       <div class="img-wrapper">
-        <img src="${product.image}" alt="${product.name}">
+        <img src="${product.image}" alt="${product.name}" onerror="this.src='../images/1.jpg'">
       </div>
       <div class="card-content">
         <h3>${product.name}</h3>
-        <p class="price">From ₹${product.price} <span>per piece</span></p>
+        <p class="price">₹${product.price} <span>/ piece</span></p>
         <button>CHOOSE OPTIONS</button>
       </div>
     </div>
