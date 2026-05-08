@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product</title>
+<link rel="stylesheet" href="../style.css">
+
+<style>
+
+body{
+  background:#f5f1eb;
+  margin:0;
+  padding:0;
+}
+
+/* HEADER */
+.topbar{
+  width:100%;
+  padding:20px 60px;
+  background:white;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:bold;
+}
+
+.back{
+  text-decoration:none;
+  color:black;
+  border:1px solid black;
+  padding:10px 20px;
+}
+
+/* MAIN LAYOUT */
+.product-page{
+  display:flex;
+  gap:80px;
+  padding:60px;
+  align-items:center;
+}
+
+/* LEFT */
+.product-img{
+  width:50%;
+}
+
+.product-img img{
+  width:100%;
+  border-radius:18px;
+  transition:0.4s;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.product-img img:hover{
+  transform:scale(1.03);
+}
+
+/* RIGHT */
+.product-details{
+  width:50%;
+}
+
+.small{
+  letter-spacing:3px;
+  color:#777;
+  font-size:13px;
+}
+
+.product-details h1{
+  font-size:48px;
+  margin-top:15px;
+  line-height:1.2;
+}
+
+.price{
+  font-size:34px;
+  margin:25px 0;
+  font-weight:bold;
+}
+
+.tag{
+  background:#e7dfd4;
+  padding:8px 15px;
+  border-radius:30px;
+  font-size:12px;
+  margin-left:10px;
+}
+
+/* DESC */
+.desc{
+  line-height:1.9;
+  color:#555;
+  margin-top:20px;
+  font-size:16px;
+}
+
+/* FEATURES */
+.features{
+  margin-top:35px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.feature-box{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+}
+
+.feature-box h3{
+  margin-bottom:8px;
+  font-size:15px;
+}
+
+/* BUTTONS */
+.buttons{
+  display:flex;
+  gap:20px;
+  margin-top:40px;
+}
+
+.btn{
+  flex:1;
+  padding:18px;
+  border:none;
+  cursor:pointer;
+  font-size:16px;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.whatsapp{
+  background:black;
+  color:white;
+}
+
+.whatsapp:hover{
+  background:#333;
+}
+
+.cart{
+  background:white;
+  border:1px solid black;
+}
+
+.cart:hover{
+  background:black;
+  color:white;
+}
+
+/* RESPONSIVE */
+@media(max-width:950px){
+
+.product-page{
+  flex-direction:column;
+  padding:30px;
+}
+
+.product-img,
+.product-details{
+  width:100%;
+}
+
+.product-details h1{
+  font-size:36px;
+}
+
+.topbar{
+  padding:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TOP -->
+<div class="topbar">
+
+  <div class="logo">
+    Crafty Carry
+  </div>
+
+  <a href="../index.html" class="back">
+    ← Back
+  </a>
+
+</div>
+
+<!-- PRODUCT -->
+<div class="product-page">
+
+  <!-- IMAGE -->
+  <div class="product-img">
+    <img id="img">
+  </div>
+
+  <!-- DETAILS -->
+  <div class="product-details">
+
+    <p class="small">PREMIUM HANDCRAFTED COLLECTION</p>
+
+    <h1 id="name"></h1>
+
+    <div class="price">
+      ₹<span id="price"></span>
+
+      <span class="tag">
+        WHOLESALE
+      </span>
+    </div>
+
+    <div class="desc">
+
+      Luxury handcrafted bag designed with premium quality fabric
+      and elegant finishing. Perfect for gifting, weddings,
+      return gifts, shopping, events and custom branding.
+
+      Customize with:
+      logo, names, printing and premium packaging.
+
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features">
+
+      <div class="feature-box">
+        <h3>Minimum Order</h3>
+        <p>100 Units</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Shipping</h3>
+        <p>Worldwide Delivery</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Material</h3>
+        <p>Premium Cotton Fabric</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Customization</h3>
+        <p>Available</p>
+      </div>
+
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+
+      <button class="btn whatsapp"
+      onclick="orderWhatsApp()">
+        INQUIRE NOW
+      </button>
+
+      <button class="btn cart">
+        ADD TO CART
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+const p = new URLSearchParams(window.location.search);
+
+const name = p.get("name");
+const image = p.get("image");
+const price = p.get("price");
+
+document.getElementById("name").innerText = name;
+document.getElementById("price").innerText = price;
+document.getElementById("img").src = "../" + image;
+
+// WhatsApp
+function orderWhatsApp(){
+
+  const msg =
+  `Hello, I want to inquire about ${name} (₹${price})`;
+
+  window.open(
+  `https://wa.me/919650559550?text=${encodeURIComponent(msg)}`
+  );
+
+}
+
+</script>
+
+</body>
+</html>

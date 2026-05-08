@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Crafty Carry</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <h1>Welcome to Crafty Carry</h1>
+</div>
+
+<!-- HEADER -->
+<header>
+
+  <div class="logo">
+    Crafty Carry
+  </div>
+
+  <nav>
+    <a href="#tote">Tote</a>
+    <a href="#hamper">Hamper</a>
+    <a href="#bottle">Bottle</a>
+    <a href="#custom">Custom</a>
+    <a href="#potli">Potli</a>
+    <a href="#kids">Kids</a>
+  </nav>
+
+  <button class="contact-btn">
+    Contact
+  </button>
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+  <video autoplay muted loop playsinline>
+    <source src="videos/bag.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay">
+    <h1>Crafted for Everyday Style</h1>
+    <p>Premium Bags for Every Occasion</p>
+  </div>
+
+</section>
+
+<!-- COLLECTION SLIDER -->
+<section class="collections">
+
+  <h2>Shop by Category</h2>
+
+  <div class="slider" id="slider">
+
+    <div class="slide-track" id="track">
+
+      <div class="item">
+        <img src="jute bags/100.jpg">
+        <p>Tote Bags</p>
+      </div>
+
+      <div class="item">
+        <img src="images/2.jpg">
+        <p>Hamper Bags</p>
+      </div>
+
+      <div class="item">
+        <img src="images/3.jpg">
+        <p>Bottle Bags</p>
+      </div>
+
+      <div class="item">
+        <img src="images/4.jpg">
+        <p>Custom Bags</p>
+      </div>
+
+      <div class="item">
+        <img src="images/5.jpg">
+        <p>Potli Bags</p>
+      </div>
+
+      <div class="item">
+        <img src="images/6.jpg">
+        <p>Kids Bags</p>
+      </div>
+
+      <!-- DUPLICATE -->
+
+      <div class="item">
+        <img src="images/1.jpg">
+        <p>Tote Bags</p>
+      </div>
+
+      <div class="item">
+        <img src="images/2.jpg">
+        <p>Hamper Bags</p>
+      </div>
+
+      <div class="item">
+        <img src="images/3.jpg">
+        <p>Bottle Bags</p>
+      </div>
+
+      <div class="item">
+        <img src="images/4.jpg">
+        <p>Custom Bags</p>
+      </div>
+
+      <div class="item">
+        <img src="images/5.jpg">
+        <p>Potli Bags</p>
+      </div>
+
+      <div class="item">
+        <img src="images/6.jpg">
+        <p>Kids Bags</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- TOTE -->
+<section id="tote" class="category">
+
+  <h2>Tote Bags</h2>
+
+  <div class="products">
+
+    <div class="card"
+    onclick="openProduct(
+    'Classic Tote',
+    'images/1.jpg',
+    '600'
+    )">
+
+      <img src="images/1.jpg">
+
+      <h3>Classic Tote</h3>
+
+      <p class="price">
+        From ₹600
+      </p>
+
+    </div>
+
+    <div class="card"
+    onclick="openProduct(
+    'Eco Tote',
+    'images/2.jpg',
+    '700'
+    )">
+
+      <img src="images/2.jpg">
+
+      <h3>Eco Tote</h3>
+
+      <p class="price">
+        From ₹700
+      </p>
+
+    </div>
+
+    <div class="card"
+    onclick="openProduct(
+    'Premium Tote',
+    'images/3.jpg',
+    '900'
+    )">
+
+      <img src="images/3.jpg">
+
+      <h3>Premium Tote</h3>
+
+      <p class="price">
+        From ₹900
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="view-all">
+
+    <button onclick="viewAll('tote')">
+      VIEW ALL
+    </button>
+
+  </div>
+
+</section>
+
+<!-- HAMPER -->
+<section id="hamper" class="category">
+
+  <h2>Hamper Bags</h2>
+
+  <div class="products">
+
+    <div class="card"
+    onclick="openProduct(
+    'Luxury Hamper',
+    'images/4.jpg',
+    '650'
+    )">
+
+      <img src="images/4.jpg">
+
+      <h3>Luxury Hamper</h3>
+
+      <p class="price">
+        From ₹650
+      </p>
+
+    </div>
+
+    <div class="card"
+    onclick="openProduct(
+    'Gift Hamper',
+    'images/5.jpg',
+    '750'
+    )">
+
+      <img src="images/5.jpg">
+
+      <h3>Gift Hamper</h3>
+
+      <p class="price">
+        From ₹750
+      </p>
+
+    </div>
+
+    <div class="card"
+    onclick="openProduct(
+    'Premium Hamper',
+    'images/6.jpg',
+    '900'
+    )">
+
+      <img src="images/6.jpg">
+
+      <h3>Premium Hamper</h3>
+
+      <p class="price">
+        From ₹900
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="view-all">
+
+    <button onclick="viewAll('hamper')">
+      VIEW ALL
+    </button>
+
+  </div>
+
+</section>
+
+<!-- BOTTLE -->
+<section id="bottle" class="category">
+
+  <h2>Bottle Bags</h2>
+
+  <div class="products">
+
+    <div class="card"
+    onclick="openProduct(
+    'Classic Bottle',
+    'images/bag1.jpg',
+    '400'
+    )">
+
+      <img src="images/bag1.jpg">
+
+      <h3>Classic Bottle</h3>
+
+      <p class="price">
+        From ₹400
+      </p>
+
+    </div>
+
+    <div class="card"
+    onclick="openProduct(
+    'Travel Bottle',
+    'images/bag2.jpg',
+    '550'
+    )">
+
+      <img src="images/bag2.jpg">
+
+      <h3>Travel Bottle</h3>
+
+      <p class="price">
+        From ₹550
+      </p>
+
+    </div>
+
+    <div class="card"
+    onclick="openProduct(
+    'Premium Bottle',
+    'images/bag3.jpg',
+    '700'
+    )">
+
+      <img src="images/bag3.jpg">
+
+      <h3>Premium Bottle</h3>
+
+      <p class="price">
+        From ₹700
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="view-all">
+
+    <button onclick="viewAll('bottle')">
+      VIEW ALL
+    </button>
+
+  </div>
+
+</section>
+
+<!-- CUSTOM -->
+<section id="custom" class="category">
+
+  <h2>Custom Bags</h2>
+
+  <div class="products">
+
+    <div class="card"
+    onclick="openProduct(
+    'Printed Custom',
+    'images/bag1.jpg',
+    '800'
+    )">
+
+      <img src="images/bag1.jpg">
+
+      <h3>Printed Custom</h3>
+
+      <p class="price">
+        From ₹800
+      </p>
+
+    </div>
+
+    <div class="card"
+    onclick="openProduct(
+    'Logo Custom',
+    'images/bag2.jpg',
+    '900'
+    )">
+
+      <img src="images/bag2.jpg">
+
+      <h3>Logo Custom</h3>
+
+      <p class="price">
+        From ₹900
+      </p>
+
+    </div>
+
+    <div class="card"
+    onclick="openProduct(
+    'Premium Custom',
+    'images/bag3.jpg',
+    '1200'
+    )">
+
+      <img src="images/bag3.jpg">
+
+      <h3>Premium Custom</h3>
+
+      <p class="price">
+        From ₹1200
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="view-all">
+
+    <button onclick="viewAll('custom')">
+      VIEW ALL
+    </button>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+  <p>📍 Your Address</p>
+
+  <p>📞 +91 XXXXXXXX</p>
+
+  <p>📧 craftycarry@gmail.com</p>
+
+</footer>
+
+<!-- SCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>
